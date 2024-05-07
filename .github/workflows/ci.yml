@@ -29,13 +29,12 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material \
-                         "mkdocs-material[imaging]" \
-                         mkdocs-material-extensions \
-                         mkdocs-htmlproofer-plugin \
-                         mkdocs-redirects \
-                         mkdocs-with-pdf \
-                         beautifulsoup4
+      - name: Get requirements
+        run: |
+          mkdir -p .venv
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
       - run: make home
       - run: make pdf
       - run: make zip
