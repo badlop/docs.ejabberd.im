@@ -35,8 +35,18 @@ jobs:
           python3 -m venv .venv
           source .venv/bin/activate
           pip install -r requirements.txt
-      - run: make home
-      - run: make pdf
-      - run: make zip
-      #- run: make test
-      - run: mkdocs gh-deploy --force
+      - run: |
+          source .venv/bin/activate
+          make home
+      - run: |
+          source .venv/bin/activate
+          make pdf
+      - run: |
+          source .venv/bin/activate
+          make zip
+      - run: |
+          source .venv/bin/activate
+          make test
+      - run: |
+          source .venv/bin/activate
+          mkdocs gh-deploy --force
